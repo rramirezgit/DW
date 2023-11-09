@@ -66,7 +66,7 @@ export function useNavData() {
           },
           {
             title: t('Map'),
-            path: paths.dashboard.general.ecommerce,
+            path: paths.dashboard.map,
             icon: ICONS.map,
           },
           // {

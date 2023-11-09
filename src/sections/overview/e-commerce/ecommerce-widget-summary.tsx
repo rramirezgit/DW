@@ -10,6 +10,7 @@ import { fNumber, fPercent } from 'src/utils/format-number';
 // components
 import Iconify from 'src/components/iconify';
 import Chart, { useChart } from 'src/components/chart';
+import { useResponsive } from 'src/hooks/use-responsive';
 
 // ----------------------------------------------------------------------
 
@@ -22,6 +23,7 @@ interface Props extends CardProps {
     series: number[];
     options?: ApexOptions;
   };
+  fill?: any;
 }
 
 export default function EcommerceWidgetSummary({
@@ -30,9 +32,12 @@ export default function EcommerceWidgetSummary({
   total,
   chart,
   sx,
+  fill,
   ...other
 }: Props) {
   const theme = useTheme();
+
+  const mdUp = useResponsive('up', 'md');
 
   const {
     colors = [theme.palette.primary.light, theme.palette.primary.main],
@@ -42,7 +47,7 @@ export default function EcommerceWidgetSummary({
 
   const chartOptions = useChart({
     colors: [colors[1]],
-    fill: {
+    fill: fill || {
       type: 'gradient',
       gradient: {
         colorStops: [
@@ -101,14 +106,26 @@ export default function EcommerceWidgetSummary({
         {fPercent(percent)}
 
         <Box component="span" sx={{ color: 'text.secondary', typography: 'body2' }}>
-          {' than last week'}
+          {percent < 0 ? ' menos que la semana pasada' : ' más que la semana pasada'}
         </Box>
       </Typography>
     </Stack>
   );
 
   return (
-    <Card sx={{ display: 'flex', alignItems: 'center', p: 3, ...sx }} {...other}>
+    <Card
+      sx={{
+        display: 'flex',
+        flexDirection: {
+          xs: 'column',
+          sm: 'row',
+        },
+        alignItems: 'center',
+        p: 3,
+        ...sx,
+      }}
+      {...other}
+    >
       <Box sx={{ flexGrow: 1 }}>
         <Typography variant="subtitle2" sx={{ mb: 2 }}>
           {title}
@@ -125,7 +142,7 @@ export default function EcommerceWidgetSummary({
         type="line"
         series={[{ data: series }]}
         options={chartOptions}
-        width={96}
+        width={mdUp ? 96 : '100%'}
         height={64}
       />
     </Card>
