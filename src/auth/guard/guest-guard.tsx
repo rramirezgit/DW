@@ -1,4 +1,6 @@
 import { useCallback, useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+
 // routes
 import { paths } from 'src/routes/paths';
 import { useRouter, useSearchParams } from 'src/routes/hooks';
@@ -18,13 +20,15 @@ export default function GuestGuard({ children }: Props) {
 
   const returnTo = searchParams.get('returnTo') || paths.dashboard.root;
 
+  const { loginWithRedirect } = useAuth0();
+
   const { authenticated } = useAuthContext();
 
   const check = useCallback(() => {
     if (authenticated) {
-      router.replace(returnTo);
+      loginWithRedirect();
     }
-  }, [authenticated, returnTo, router]);
+  }, [authenticated, loginWithRedirect]);
 
   useEffect(() => {
     check();

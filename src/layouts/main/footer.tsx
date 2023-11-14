@@ -168,6 +168,6 @@ export default function Footer() {
       </Container>
     </Box>
   );
-
-  return isHome ? simpleFooter : mainFooter;
+  return mainFooter;
+  // return isHome ? simpleFooter : mainFooter;
 }

@@ -150,5 +150,5 @@ export function palette(mode: 'light' | 'dark') {
     },
   };
 
-  return mode === 'light' ? light : dark;
+  return dark;
 }

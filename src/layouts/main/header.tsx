@@ -24,7 +24,7 @@ import { navConfig } from './config-navigation';
 import NavMobile from './nav/mobile';
 import NavDesktop from './nav/desktop';
 //
-import { SettingsButton, HeaderShadow, LoginButton } from '../_common';
+import { SettingsButton, HeaderShadow, LoginButton, LanguagePopover } from '../_common';
 
 // ----------------------------------------------------------------------
 
@@ -48,10 +48,10 @@ export default function Header() {
             easing: theme.transitions.easing.easeInOut,
             duration: theme.transitions.duration.shorter,
           }),
+          ...bgBlur({
+            color: theme.palette.background.default,
+          }),
           ...(offsetTop && {
-            ...bgBlur({
-              color: theme.palette.background.default,
-            }),
             height: {
               md: HEADER.H_DESKTOP_OFFSET,
             },
@@ -59,47 +59,25 @@ export default function Header() {
         }}
       >
         <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
-          <Badge
-            sx={{
-              [`& .${badgeClasses.badge}`]: {
-                top: 8,
-                right: -16,
-              },
-            }}
-            badgeContent={
-              <Link
-                href={paths.changelog}
-                target="_blank"
-                rel="noopener"
-                underline="none"
-                sx={{ ml: 1 }}
-              >
-                <Label color="info" sx={{ textTransform: 'unset', height: 22, px: 0.5 }}>
-                  v5.4.0
-                </Label>
-              </Link>
-            }
-          >
-            <Logo />
-          </Badge>
+          <Logo />
 
           <Box sx={{ flexGrow: 1 }} />
 
           {mdUp && <NavDesktop offsetTop={offsetTop} data={navConfig} />}
 
+          <LanguagePopover />
+
           <Stack alignItems="center" direction={{ xs: 'row', md: 'row-reverse' }}>
-            <Button variant="contained" target="_blank" rel="noopener" href={paths.minimalUI}>
-              Purchase Now
-            </Button>
+            <Button variant="contained">Contratar</Button>
 
             {mdUp && <LoginButton />}
-
+            {/* 
             <SettingsButton
               sx={{
                 ml: { xs: 1, md: 0 },
                 mr: { md: 2 },
               }}
-            />
+            /> */}
 
             {!mdUp && <NavMobile offsetTop={offsetTop} data={navConfig} />}
           </Stack>

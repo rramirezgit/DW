@@ -177,14 +177,6 @@ export default function SettingsDrawer() {
 
       <Scrollbar>
         <Stack spacing={3} sx={{ p: 3 }}>
-          {renderMode}
-
-          {renderContrast}
-
-          {renderDirection}
-
-          {renderLayout}
-
           {renderStretch}
 
           {renderPresets}

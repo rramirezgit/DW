@@ -4,6 +4,9 @@ import 'src/locales/i18n';
 // scrollbar
 import 'simplebar-react/dist/simplebar.min.css';
 
+// css global
+import '../theme/style/global.css';
+
 // lightbox
 import 'yet-another-react-lightbox/styles.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
@@ -37,8 +40,8 @@ import { SettingsProvider, SettingsDrawer } from 'src/components/settings';
 // sections
 import { CheckoutProvider } from 'src/sections/checkout/context';
 // auth
-import { AuthProvider, AuthConsumer } from 'src/auth/context/jwt';
-// import { AuthProvider, AuthConsumer } from 'src/auth/context/auth0';
+// import { AuthProvider, AuthConsumer } from 'src/auth/context/jwt';
+import { AuthProvider, AuthConsumer } from 'src/auth/context/auth0';
 // import { AuthProvider, AuthConsumer } from 'src/auth/context/amplify';
 // import { AuthProvider, AuthConsumer } from 'src/auth/context/firebase';
 
@@ -93,7 +96,7 @@ export default function RootLayout({ children }: Props) {
           <LocalizationProvider>
             <SettingsProvider
               defaultSettings={{
-                themeMode: 'light', // 'light' | 'dark'
+                themeMode: 'dark', // 'light' | 'dark'
                 themeDirection: 'ltr', //  'rtl' | 'ltr'
                 themeContrast: 'default', // 'default' | 'bold'
                 themeLayout: 'vertical', // 'vertical' | 'horizontal' | 'mini'

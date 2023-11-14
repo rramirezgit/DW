@@ -1,5 +1,6 @@
 import { useEffect, useCallback, useState } from 'react';
 // routes
+import { useAuth0 } from '@auth0/auth0-react';
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 //
@@ -21,27 +22,19 @@ type Props = {
 };
 
 export default function AuthGuard({ children }: Props) {
-  const router = useRouter();
+  const { authenticated } = useAuthContext();
 
-  const { authenticated, method } = useAuthContext();
+  const { loginWithRedirect } = useAuth0();
 
   const [checked, setChecked] = useState(false);
 
   const check = useCallback(() => {
     if (!authenticated) {
-      const searchParams = new URLSearchParams({
-        returnTo: window.location.pathname,
-      }).toString();
-
-      const loginPath = loginPaths[method];
-
-      const href = `${loginPath}?${searchParams}`;
-
-      router.replace(href);
+      loginWithRedirect();
     } else {
       setChecked(true);
     }
-  }, [authenticated, method, router]);
+  }, [authenticated, loginWithRedirect]);
 
   useEffect(() => {
     check();

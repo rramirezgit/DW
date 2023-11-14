@@ -1,37 +1,65 @@
+/* eslint-disable react/no-danger */
 import { m } from 'framer-motion';
 // @mui
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import { Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import { styled, useTheme } from '@mui/material/styles';
 // hooks
-import { useResponsive } from 'src/hooks/use-responsive';
 // routes
-import { paths } from 'src/routes/paths';
 // components
 import Image from 'src/components/image';
-import Iconify from 'src/components/iconify';
 import { MotionViewport, varFade } from 'src/components/animate';
+import { useLocales } from 'src/locales';
 
 // ----------------------------------------------------------------------
 
-export default function HomeLookingFor() {
-  const mdUp = useResponsive('up', 'md');
+const StyledUl = styled('ul')(({ theme }) => ({
+  // lista con cradritos en vez de puntos
+  listStyle: 'none',
+  padding: 0,
+}));
 
-  const renderBtn = (
-    <Button
-      color="inherit"
-      size="large"
-      variant="outlined"
-      target="_blank"
-      rel="noopener"
-      href={paths.zoneUI}
-      endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
-    >
-      Visit Zone Landing Page
-    </Button>
-  );
+const StyledLi = styled('li')(({ theme }) => ({
+  position: 'relative',
+  paddingLeft: '1.5em',
+  textAlign: 'left',
+  '&::before': {
+    content: '" "',
+    color: theme.palette.text.primary,
+    fontWeight: 'bold',
+    display: 'inline-block',
+    width: '10px',
+    height: '10px',
+    backgroundColor: theme.palette.info.main,
+    position: 'absolute',
+    left: '0',
+    top: '12px',
+    transform: 'translateY(-50%)',
+  },
+}));
+
+export default function HomeDiscover() {
+  const Theme = useTheme();
+
+  const { t } = useLocales();
+
+  const dataList = [
+    {
+      title: t('Discover_Unified_Platform_title'),
+      description: t('Discover_Unified_Platform_text'),
+    },
+    {
+      title: t('Discover_AI_Powered_Insights_title'),
+      description: t('Discover_AI_Powered_Insights_text'),
+    },
+    {
+      title: t('Discover_Future_Ready_Approach_title'),
+      description: t('Discover_Future_Ready_Approach_text'),
+    },
+  ];
 
   const renderDescription = (
     <Stack
@@ -39,55 +67,144 @@ export default function HomeLookingFor() {
         textAlign: {
           xs: 'center',
           md: 'left',
+          width: '100%',
+          maxWidth: '573px',
         },
       }}
     >
       <m.div variants={varFade().inDown}>
-        <Typography variant="overline" component="div" sx={{ color: 'text.disabled' }}>
-          Looking For a
+        <Typography variant="overline" sx={{ color: Theme.palette.info.main }}>
+          ¿Porque datawing?
         </Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
         <Typography
-          variant="h2"
+          variant="h3"
           sx={{
-            mt: 3,
-            mb: { md: 5 },
+            lineHeight: '44px',
           }}
         >
-          Landing Page Template?
+          Explora la vanguardia en soluciones agroindustriales y desata una revolución en el
+          crecimiento de tu negocio
+        </Typography>
+      </m.div>
+      <m.div variants={varFade().inDown}>
+        <Typography
+          variant="body1"
+          sx={{
+            mt: '15px',
+            color: Theme.palette.text.secondary,
+          }}
+        >
+          En la vanguardia de la tecnología geoespacial, ofrecemos servicios que marcan la
+          diferencia, fusionando innovación y eficiencia. Descubre el distintivo que nos posiciona
+          líderes en el mercado
         </Typography>
       </m.div>
 
-      {mdUp && <m.div variants={varFade().inDown}> {renderBtn} </m.div>}
+      <StyledUl>
+        {dataList.map((item, index) => (
+          <StyledLi key={index}>
+            <span
+              style={{
+                color: Theme.palette.info.main,
+                fontWeight: 'bold',
+              }}
+            >
+              {item.title}
+            </span>{' '}
+            {item.description}
+          </StyledLi>
+        ))}
+      </StyledUl>
     </Stack>
   );
 
+  const renderImgs = (
+    <m.div variants={varFade().inRight}>
+      <Stack
+        gap={3}
+        style={{
+          position: 'relative',
+          zIndex: 999,
+          width: '100%',
+          height: '100%',
+        }}
+      >
+        <Stack direction="row" gap={2.5} justifyContent="center" alignItems="end">
+          <Image
+            src="/assets/images/home/cards/default-placeholder.jpg"
+            style={{
+              borderRadius: 10,
+              width: '30%',
+              boxShadow: '0px 30px 60px 0px rgba(59, 130, 246, 0.25)',
+            }}
+            alt="prueba"
+          />
+          <Image
+            src="/assets/images/home/cards/default-placeholder.jpg"
+            alt="prueba"
+            style={{
+              borderRadius: 10,
+              width: '48%',
+              boxShadow: '0px 30px 60px 0px rgba(59, 130, 246, 0.25)',
+            }}
+          />
+          <Image
+            src="/assets/images/home/cards/default-placeholder.jpg"
+            alt="prueba"
+            style={{
+              borderRadius: 10,
+              width: '40%',
+              boxShadow: `0px 30px 60px 0px rgba(59, 130, 246, 0.25)`,
+            }}
+          />
+        </Stack>
+
+        <Stack direction="row" gap={3} justifyContent="center" alignItems="initial">
+          <Image
+            src="/assets/images/home/cards/default-placeholder.jpg"
+            alt="prueba"
+            style={{
+              borderRadius: 10,
+              width: '60%',
+              boxShadow: '0px 30px 60px 0px rgba(59, 130, 246, 0.25)',
+            }}
+          />
+        </Stack>
+      </Stack>
+    </m.div>
+  );
+
   return (
-    <Container
-      component={MotionViewport}
+    <Box
       sx={{
-        py: { xs: 10, md: 15 },
+        position: 'relative',
+        backgroundColor: Theme.palette.background.neutral,
       }}
     >
-      <Grid container alignItems="center" justifyContent="space-between" spacing={{ xs: 5, md: 0 }}>
-        <Grid xs={12} md={4}>
-          {renderDescription}
-        </Grid>
-
-        <Grid xs={12} md={7}>
-          <m.div variants={varFade().inUp}>
-            <Image disabledEffect alt="rocket" src="/assets/images/home/zone_landing.webp" />
-          </m.div>
-        </Grid>
-
-        {!mdUp && (
-          <Grid xs={12} sx={{ textAlign: 'center' }}>
-            {renderBtn}
+      <Container
+        component={MotionViewport}
+        sx={{
+          py: { xs: 10, md: 15 },
+        }}
+      >
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="space-between"
+          spacing={{ xs: 5, md: 3 }}
+        >
+          <Grid xs={12} md={6}>
+            {renderDescription}
           </Grid>
-        )}
-      </Grid>
-    </Container>
+
+          <Grid xs={12} md={6}>
+            <m.div variants={varFade().inUp}>{renderImgs}</m.div>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 }
