@@ -19,7 +19,7 @@ type CountryProps = {
 };
 
 interface Props extends MapBoxProps {
-  data: CountryProps[];
+  data?: CountryProps[];
 }
 
 function MapMarkersPopups({ data, ...other }: Props) {

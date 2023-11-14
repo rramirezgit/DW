@@ -5,16 +5,18 @@ import Chart, { useChart } from 'src/components/chart';
 
 type Props = {
   series: number[];
+  legendPosition?: 'top' | 'bottom' | 'right' | 'left';
+  labels: string[];
 };
 
-export default function ChartDonut({ series }: Props) {
+export default function ChartDonut({ series, legendPosition = 'top', labels = [] }: Props) {
   const chartOptions = useChart({
-    labels: ['Apple', 'Mango', 'Orange', 'Watermelon'],
+    labels,
     stroke: {
       show: false,
     },
     legend: {
-      horizontalAlign: 'center',
+      position: legendPosition,
     },
     tooltip: {
       fillSeriesColor: false,

@@ -13,13 +13,15 @@ const LEGEND_HEIGHT = 72;
 
 const StyledChart = styled(Chart)(({ theme }) => ({
   height: CHART_HEIGHT,
+  marginLeft: '50px !important',
+  width: '310px !important',
   '& .apexcharts-canvas, .apexcharts-inner, svg, foreignObject': {
-    height: `100% !important`,
+    height: `180px !important`,
   },
   '& .apexcharts-legend': {
-    height: LEGEND_HEIGHT,
-    marginBottom: theme.spacing(3),
-    top: `calc(${CHART_HEIGHT - LEGEND_HEIGHT}px) !important`,
+    '& .apexcharts-legend-text': {
+      width: 100,
+    },
   },
 }));
 
@@ -27,20 +29,19 @@ const StyledChart = styled(Chart)(({ theme }) => ({
 
 type Props = {
   series: number[];
+  labels: string[];
 };
 
-export default function ChartRadialBar({ series }: Props) {
+export default function ChartRadialBar({ series, labels = [] }: Props) {
   const chartOptions = useChart({
     chart: {
       sparkline: {
         enabled: true,
       },
     },
-    labels: ['Apples', 'Oranges'],
+    labels,
     legend: {
-      floating: true,
-      position: 'bottom',
-      horizontalAlign: 'center',
+      position: 'right',
     },
     plotOptions: {
       radialBar: {
@@ -49,10 +50,11 @@ export default function ChartRadialBar({ series }: Props) {
         },
         dataLabels: {
           value: {
-            offsetY: 16,
+            offsetY: 8,
           },
           total: {
-            formatter: () => fNumber(2324),
+            // porcentaje
+            formatter: () => `${fNumber(series[0])}%`,
           },
         },
       },
@@ -60,6 +62,6 @@ export default function ChartRadialBar({ series }: Props) {
   });
 
   return (
-    <StyledChart dir="ltr" type="radialBar" series={series} options={chartOptions} height={280} />
+    <StyledChart dir="ltr" type="radialBar" series={series} options={chartOptions} height={191} />
   );
 }

@@ -62,10 +62,10 @@ export default function Header() {
           <Logo />
 
           <Box sx={{ flexGrow: 1 }} />
-
+          {/* 
           {mdUp && <NavDesktop offsetTop={offsetTop} data={navConfig} />}
 
-          <LanguagePopover />
+          <LanguagePopover /> */}
 
           <Stack alignItems="center" direction={{ xs: 'row', md: 'row-reverse' }}>
             <Button variant="contained">Contratar</Button>
