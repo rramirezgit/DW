@@ -134,7 +134,7 @@ export default function HomeDiscover() {
       >
         <Stack direction="row" gap={2.5} justifyContent="center" alignItems="end">
           <Image
-            src="/assets/images/home/cards/default-placeholder.jpg"
+            src="/assets/images/home/Rectangle4.png"
             style={{
               borderRadius: 10,
               width: '30%',
@@ -143,7 +143,7 @@ export default function HomeDiscover() {
             alt="prueba"
           />
           <Image
-            src="/assets/images/home/cards/default-placeholder.jpg"
+            src="/assets/images/home/Rectangle2.png"
             alt="prueba"
             style={{
               borderRadius: 10,
@@ -152,7 +152,7 @@ export default function HomeDiscover() {
             }}
           />
           <Image
-            src="/assets/images/home/cards/default-placeholder.jpg"
+            src="/assets/images/home/Rectangle1.png"
             alt="prueba"
             style={{
               borderRadius: 10,
@@ -164,7 +164,7 @@ export default function HomeDiscover() {
 
         <Stack direction="row" gap={3} justifyContent="center" alignItems="initial">
           <Image
-            src="/assets/images/home/cards/default-placeholder.jpg"
+            src="/assets/images/home/Rectangle3.png"
             alt="prueba"
             style={{
               borderRadius: 10,

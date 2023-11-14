@@ -99,7 +99,7 @@ export default function MapAppView() {
     'NDMI',
   ];
 
-  const [formatsselected, setFormatsselected] = useState(() => ['NDVI', 'CI', 'EWI', 'LAI']);
+  const [formatsselected, setFormatsselected] = useState(() => ['']);
 
   const handleFormat = (event: React.MouseEvent<HTMLElement>, newFormats: string[]) => {
     setFormatsselected(newFormats);
