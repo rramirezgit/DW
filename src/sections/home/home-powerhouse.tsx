@@ -63,7 +63,7 @@ export default function HomePowerhouse() {
     >
       <m.div variants={varFade().in}>
         <Typography variant="h3" sx={{ fontWeight: '700' }}>
-          {t('landing_home_Powerhouse_title')}
+          Funcionalidades
         </Typography>
       </m.div>
     </Stack>
@@ -71,43 +71,43 @@ export default function HomePowerhouse() {
 
   const togglesData = [
     {
-      name: t('Dynamic_Dashboard_label'),
+      name: 'Dashboard integral',
       icon: 'assets/icons/home/powerhouse/Dashboard.png',
       color: Theme.palette.info.main,
-      title: t('Dynamic_Dashboard_label'),
-      text: t('Dynamic_Dashboard_text'),
+      title: 'Dashboard integral',
+      text: 'Nuestra plataforma combina análisis avanzado, visualizaciones satélitales y datos meteorológicos, ofreciendo una solución integral para optimizar decisiones y maximizar la productividad y rentabilidad en el sector agrícola.',
       value: -1,
     },
     {
-      name: t('Automation_label'),
+      name: 'Indices Multispectrales',
       icon: 'assets/icons/home/powerhouse/Multiespaciales.png',
       color: Theme.palette.primary.main,
-      title: t('Automation_title'),
-      text: t('Automation_text'),
+      title: 'Indices Multispectrales',
+      text: 'Nuestra plataforma destaca por la inclusión de índices multispectrales. Estos índices, procesados con la más alta precisión, brindan una perspectiva detallada y profunda de variaciones y características específicas del terreno, facilitando decisiones informadas.',
       value: 1,
     },
     {
-      name: t('AI_recommendations_Label'),
+      name: 'Múltiples Mapas',
       icon: 'assets/icons/home/powerhouse/Mapas.png',
       color: Theme.palette.info.main,
-      title: t('AI_recommendations_Label'),
-      text: t('AI_recommendations_text'),
+      title: 'Múltiples Mapas',
+      text: 'Además, ponemos a tu disposición una amplia gama de mapas detallados. Estos mapas no solo representan la geografía, sino que integran datos relevantes y actualizados, ofreciendo una visualización completa de las áreas de interés.',
       value: 2,
     },
     {
-      name: t('Analytics_label'),
+      name: 'Análisis Comparativo',
       icon: 'assets/icons/home/powerhouse/Comparativo.png',
       color: Theme.palette.primary.main,
-      title: t('Analytics_title'),
-      text: t('Analytics_text'),
+      title: 'Análisis Comparativo',
+      text: 'Uno de los pilares de nuestra herramienta es el análisis comparativo. A través de esta función, puedes contrastar datos, resultados y tendencias, permitiendo identificar oportunidades y áreas de mejora con claridad.',
       value: 3,
     },
     {
-      name: t('Trends_label'),
+      name: 'Gráficas Informativas',
       icon: 'assets/icons/home/powerhouse/Informativas.png',
       color: Theme.palette.info.main,
-      title: t('Trends_title'),
-      text: t('Trends_text'),
+      title: 'Gráficas Informativas',
+      text: 'Para una representación visual más intuitiva, nuestra plataforma ofrece gráficas informativas. Estas gráficas transforman los datos complejos en visualizaciones sencillas y claras, facilitando su interpretación y aplicación en estrategias agroindustriales.',
       value: 4,
     },
   ];

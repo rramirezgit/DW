@@ -132,7 +132,7 @@ export default function EcommerceWidgetSummary({
         </Typography>
 
         <Typography variant="h3" gutterBottom>
-          {fNumber(total)}
+          {total}
         </Typography>
 
         {renderTrending}

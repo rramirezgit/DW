@@ -80,15 +80,16 @@ const CardAnalitycs = ({ title, series, labels }: CardProps) => (
 );
 
 export default function MapAppView() {
-  const settings = useSettingsContext();
-
   const formats = [
+    'RGB',
     'NDVI',
+    'GNDVI',
+    'NDRE',
+    'LCI',
+    'OSAVI',
     'EVI',
     'SAVI',
-    'RGB',
     'EWI',
-    'OSAVI',
     'LAI',
     'LST',
     'NBR',
@@ -159,12 +160,24 @@ export default function MapAppView() {
       src: '/assets/NDVI.png',
     },
     {
-      name: 'OSAVI',
-      src: '/assets/OSAVI.png',
+      name: 'NDVI',
+      src: '/assets/NDVI.png',
     },
     {
       name: 'RGB',
       src: '/assets/RGB.png',
+    },
+    {
+      name: 'GNDVI',
+      src: '/assets/GNDVI.png',
+    },
+    {
+      name: 'LCI',
+      src: '/assets/LCI.png',
+    },
+    {
+      name: 'OSAVI',
+      src: '/assets/OSAVI.png',
     },
   ];
 
@@ -264,17 +277,22 @@ export default function MapAppView() {
   );
   const renderRange = (
     <Stack
+      width="100%"
       direction={{
         xs: 'column',
         md: 'row',
       }}
-      width="100%"
       spacing={3}
     >
       <DatePicker
         label="Start date"
         value={startDate}
-        sx={{ width: '50%' }}
+        sx={{
+          width: {
+            xs: '100%',
+            md: '50%',
+          },
+        }}
         onChange={setstartDate}
       />
 
@@ -282,7 +300,12 @@ export default function MapAppView() {
         label="End date"
         value={endDate}
         onChange={setEndDate}
-        sx={{ width: '50%' }}
+        sx={{
+          width: {
+            xs: '100%',
+            md: '50%',
+          },
+        }}
         slotProps={{
           textField: {
             error: dateError,
@@ -354,7 +377,7 @@ export default function MapAppView() {
   );
 
   return (
-    <Container maxWidth={settings.themeStretch ? false : 'xl'}>
+    <Container maxWidth="xl">
       <Stack spacing={2}>
         {renderButton}
 
@@ -362,7 +385,7 @@ export default function MapAppView() {
 
         {mdUp ? options : optionMobile}
 
-        {renderSlider}
+        {/* {renderSlider} */}
 
         {renderRange}
 

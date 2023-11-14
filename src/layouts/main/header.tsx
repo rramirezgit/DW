@@ -62,8 +62,8 @@ export default function Header() {
           <Logo />
 
           <Box sx={{ flexGrow: 1 }} />
-          {/* 
-          {mdUp && <NavDesktop offsetTop={offsetTop} data={navConfig} />}
+
+          {/* {mdUp && <NavDesktop offsetTop={offsetTop} data={navConfig} />}
 
           <LanguagePopover /> */}
 

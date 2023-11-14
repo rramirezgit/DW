@@ -25,8 +25,8 @@ export default function OverviewAppView() {
   const cards = [
     {
       label: 'Índice de Vegetación de Diferencia Normalizada (NDVI)',
-      percent: 2.6,
-      total: 765,
+      percent: 3.6,
+      total: 0.8,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -34,16 +34,16 @@ export default function OverviewAppView() {
         type: 'gradient',
         gradient: {
           colorStops: [
-            { offset: 0, color: '#EB5117' },
-            { offset: 100, color: alpha('#EB5117', 0.2) },
+            { offset: 0, color: '#C684FF' },
+            { offset: 100, color: alpha('#C684FF', 0.2) },
           ],
         },
       },
     },
     {
       label: 'Índice de Vegetación Mejorado (EVI)',
-      percent: 2.6,
-      total: 765,
+      percent: 1,
+      total: 0.5,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -51,16 +51,16 @@ export default function OverviewAppView() {
         type: 'gradient',
         gradient: {
           colorStops: [
-            { offset: 0, color: '#EB5117' },
-            { offset: 100, color: alpha('#EB5117', 0.2) },
+            { offset: 0, color: '#C684FF' },
+            { offset: 100, color: alpha('#C684FF', 0.2) },
           ],
         },
       },
     },
     {
       label: 'Índice de Vegetación Ajustado al Suelo (OSAVI)',
-      percent: 2.6,
-      total: 765,
+      percent: 4.4,
+      total: 0.2,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -76,8 +76,8 @@ export default function OverviewAppView() {
     },
     {
       label: 'Índice de Clorofila (CI)',
-      percent: 2.6,
-      total: 765,
+      percent: 8.6,
+      total: 0.25,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -85,16 +85,16 @@ export default function OverviewAppView() {
         type: 'gradient',
         gradient: {
           colorStops: [
-            { offset: 0, color: '#009E7F' },
-            { offset: 100, color: alpha('#009E7F', 0.2) },
+            { offset: 0, color: '#FFD666' },
+            { offset: 100, color: alpha('#FFD666', 0.2) },
           ],
         },
       },
     },
     {
       label: 'Índice de Agua de Diferencia Normalizada (NDWI)',
-      percent: -2.6,
-      total: 765,
+      percent: -1.7,
+      total: 0.15,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -110,8 +110,25 @@ export default function OverviewAppView() {
     },
     {
       label: 'Índice de Agua Mejorado (EWI)',
-      percent: -2.6,
-      total: 765,
+      percent: -3.6,
+      total: 0.35,
+      chart: {
+        series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          colorStops: [
+            { offset: 0, color: '#77ED8B' },
+            { offset: 100, color: alpha('#77ED8B', 0.2) },
+          ],
+        },
+      },
+    },
+    {
+      label: 'Índice de Temperatura de Superficie Terrestre (LST)',
+      percent: 6.8,
+      total: 0.45,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -126,26 +143,9 @@ export default function OverviewAppView() {
       },
     },
     {
-      label: 'Índice de Temperatura de Superficie Terrestre (LST)',
-      percent: 2.6,
-      total: 765,
-      chart: {
-        series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
-      },
-      fill: {
-        type: 'gradient',
-        gradient: {
-          colorStops: [
-            { offset: 0, color: '#C684FF' },
-            { offset: 100, color: alpha('#C684FF', 0.2) },
-          ],
-        },
-      },
-    },
-    {
       label: 'Índice de Quemadura de Diferencia Normalizada (NBR)',
-      percent: 2.6,
-      total: 765,
+      percent: 2.1,
+      total: 0.7,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -153,16 +153,16 @@ export default function OverviewAppView() {
         type: 'gradient',
         gradient: {
           colorStops: [
-            { offset: 0, color: '#EB5117' },
-            { offset: 100, color: alpha('#EB5117', 0.2) },
+            { offset: 0, color: '#FFD666' },
+            { offset: 100, color: alpha('#FFD666', 0.2) },
           ],
         },
       },
     },
     {
       label: 'Índice de Diferencia Normalizada de Áreas Urbanas (NDBI)',
-      percent: 2.6,
-      total: 765,
+      percent: 1.2,
+      total: 0.6,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -170,16 +170,16 @@ export default function OverviewAppView() {
         type: 'gradient',
         gradient: {
           colorStops: [
-            { offset: 0, color: '#EB5117' },
-            { offset: 100, color: alpha('#EB5117', 0.2) },
+            { offset: 0, color: '#FFD666' },
+            { offset: 100, color: alpha('#FFD666', 0.2) },
           ],
         },
       },
     },
     {
       label: 'Índice de Nieve de Diferencia Normalizada (NDSI)',
-      percent: 2.6,
-      total: 765,
+      percent: 6.3,
+      total: 0.55,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -195,8 +195,8 @@ export default function OverviewAppView() {
     },
     {
       label: 'Índice de Humedad de Diferencia Normalizada (NDMI)',
-      percent: 2.6,
-      total: 765,
+      percent: 2.5,
+      total: 0.99,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -204,16 +204,16 @@ export default function OverviewAppView() {
         type: 'gradient',
         gradient: {
           colorStops: [
-            { offset: 0, color: '#EB5117' },
-            { offset: 100, color: alpha('#EB5117', 0.2) },
+            { offset: 0, color: '#009E7F' },
+            { offset: 100, color: alpha('#009E7F', 0.2) },
           ],
         },
       },
     },
     {
       label: 'Índice de Vegetación de Diferencia Roja (RDVI)',
-      percent: 2.6,
-      total: 765,
+      percent: 0.1,
+      total: 0.7,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -221,16 +221,16 @@ export default function OverviewAppView() {
         type: 'gradient',
         gradient: {
           colorStops: [
-            { offset: 0, color: '#EB5117' },
-            { offset: 100, color: alpha('#EB5117', 0.2) },
+            { offset: 0, color: '#77ED8B' },
+            { offset: 100, color: alpha('#77ED8B', 0.2) },
           ],
         },
       },
     },
     {
       label: 'Índice de Estrés Hídrico (CWSI)',
-      percent: 2.6,
-      total: 765,
+      percent: 3.2,
+      total: 0.8,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -238,16 +238,16 @@ export default function OverviewAppView() {
         type: 'gradient',
         gradient: {
           colorStops: [
-            { offset: 0, color: '#EB5117' },
-            { offset: 100, color: alpha('#EB5117', 0.2) },
+            { offset: 0, color: '#77ED8B' },
+            { offset: 100, color: alpha('#77ED8B', 0.2) },
           ],
         },
       },
     },
     {
       label: 'Índice de Diferencia Normalizada de Terreno Desnudo (NDBaI)',
-      percent: 2.6,
-      total: 765,
+      percent: 5.2,
+      total: 0.9,
       chart: {
         series: [22, 8, 35, 50, 82, 84, 77, 12, 87, 43],
       },
@@ -255,8 +255,8 @@ export default function OverviewAppView() {
         type: 'gradient',
         gradient: {
           colorStops: [
-            { offset: 0, color: '#EB5117' },
-            { offset: 100, color: alpha('#EB5117', 0.2) },
+            { offset: 0, color: '#C684FF' },
+            { offset: 100, color: alpha('#C684FF', 0.2) },
           ],
         },
       },
@@ -292,7 +292,7 @@ export default function OverviewAppView() {
   );
 
   return (
-    <Container maxWidth={settings.themeStretch ? false : 'xl'}>
+    <Container maxWidth="xl">
       {mdUp ? (
         <Grid container spacing={3}>
           {cards.map((card) => (

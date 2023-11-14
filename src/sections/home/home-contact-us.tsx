@@ -34,16 +34,16 @@ export default function HomeContacUs() {
 
   const dataList = [
     {
-      title: t('Contact_Us_ask1'),
-      description: t('Contact_Us_answer1'),
+      title: '¿Necesito experiencia previa para usar la BioSat ?',
+      description: 'lorem ipsum dolor sit amet',
     },
     {
-      title: t('Contact_Us_ask2'),
-      description: t('Contact_Us_answer2'),
+      title: '¿Cuantas hectáreas mínimas se pueden contratar?',
+      description: 'lorem ipsum dolor sit amet',
     },
     {
-      title: t('Contact_Us_ask3'),
-      description: t('Contact_Us_answer3'),
+      title: '¿Qué hago si encuentro un problema en la plataforma?',
+      description: 'lorem ipsum dolor sit amet',
     },
   ];
 
@@ -87,7 +87,7 @@ export default function HomeContacUs() {
             fontWeight: '400',
           }}
         >
-          {t('Contact_Us_title')}
+          Contáctanos
         </Typography>
       </m.div>
       <m.div variants={varFade().inDown}>
@@ -99,7 +99,8 @@ export default function HomeContacUs() {
             marginBottom: { xs: 5, md: '38px' },
           }}
         >
-          <div dangerouslySetInnerHTML={{ __html: t('Contact_Us_text') }} />
+          ¿Quieres Contratar? ¿Tienes Preguntas? <br /> ¡Estamos Aquí para Ayudarte! Deja tus datos
+          y nos pondremos en contacto.
         </Typography>
       </m.div>
       <Formik
@@ -120,7 +121,7 @@ export default function HomeContacUs() {
                 <TextField
                   fullWidth
                   name="name"
-                  label={t('Contact_Us_form_name')}
+                  label="Nombre"
                   variant="outlined"
                   value={formik.values.name}
                   onChange={formik.handleChange}
@@ -161,7 +162,7 @@ export default function HomeContacUs() {
                   }}
                 >
                   <TextField
-                    label={t('Contact_Us_form_email')}
+                    label="Correo"
                     name="email"
                     fullWidth
                     variant="outlined"
@@ -207,7 +208,7 @@ export default function HomeContacUs() {
                       textTransform: 'capitalize',
                     }}
                   >
-                    {t('Contact_Us_form_btn')}
+                    Conversemos
                   </Button>
                 </Box>
               </Grid>

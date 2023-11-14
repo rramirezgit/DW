@@ -279,10 +279,17 @@ export default function HomeUnlock() {
             }}
           >
             <m.div variants={varFade().inDown}>
-              <Typography variant="h2">{t('landing_home_Unlock_title')}</Typography>
+              <Typography variant="h2">
+                Descubre la mejor herramienta para el análisis de campos y terrenos
+              </Typography>
             </m.div>
             <m.div variants={varFade().inDown}>
-              <Typography variant="body2">{t('landing_home_Unlock_subtitle')}</Typography>
+              <Typography variant="body2">
+                Transforma tu agroindustria con nuestra solución integral. Descubre el poder de la
+                inteligencia artificial, visualizaciones impactantes y pronósticos meteorológicos
+                precisos, todo en un único espacio. ¡Optimiza operaciones, toma decisiones
+                informadas y eleva tu retorno de inversión con nosotros! ¡Explora la plataforma hoy!
+              </Typography>
             </m.div>
           </Stack>
 

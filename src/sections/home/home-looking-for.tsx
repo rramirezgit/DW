@@ -48,16 +48,19 @@ export default function HomeDiscover() {
 
   const dataList = [
     {
-      title: t('Discover_Unified_Platform_title'),
-      description: t('Discover_Unified_Platform_text'),
+      title: 'Platforma Unificada',
+      description:
+        'Simplifica tus esfuerzos de marketing con el panel integral de MIA. Desde programación de publicaciones hasta análisis en tiempo real, todo lo que necesitas está al alcance de tu mano.',
     },
     {
-      title: t('Discover_AI_Powered_Insights_title'),
-      description: t('Discover_AI_Powered_Insights_text'),
+      title: 'IA Integrada',
+      description:
+        'Aprovecha el poder de la inteligencia artificial. Las recomendaciones de IA de MIA garantizan que tu contenido llegue al público adecuado en el momento óptimo, maximizando el compromiso e impacto.',
     },
     {
-      title: t('Discover_Future_Ready_Approach_title'),
-      description: t('Discover_Future_Ready_Approach_text'),
+      title: 'Enfoque Preparado para el Futuro',
+      description:
+        'Mantente a la vanguardia de las tendencias digitales con MIA. Nuestra plataforma evoluciona constantemente, garantizando que siempre estés equipado con las herramientas e insights más recientes para dominar tu nicho de mercado.',
     },
   ];
 
