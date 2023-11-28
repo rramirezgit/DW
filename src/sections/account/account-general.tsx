@@ -11,7 +11,8 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 // hooks
-import { useMockedUser } from 'src/hooks/use-mocked-user';
+import { useAuth0 } from '@auth0/auth0-react';
+
 // utils
 import { fData } from 'src/utils/format-number';
 // assets
@@ -31,7 +32,7 @@ import FormProvider, {
 export default function AccountGeneral() {
   const { enqueueSnackbar } = useSnackbar();
 
-  const { user } = useMockedUser();
+  const { user } = useAuth0();
 
   const UpdateUserSchema = Yup.object().shape({
     displayName: Yup.string().required('Name is required'),

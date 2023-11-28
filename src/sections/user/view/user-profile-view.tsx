@@ -7,9 +7,9 @@ import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 // routes
+import { useAuth0 } from '@auth0/auth0-react';
 import { paths } from 'src/routes/paths';
 // hooks
-import { useMockedUser } from 'src/hooks/use-mocked-user';
 // _mock
 import { _userAbout, _userFeeds, _userFriends, _userGallery, _userFollowers } from 'src/_mock';
 // components
@@ -53,7 +53,7 @@ const TABS = [
 export default function UserProfileView() {
   const settings = useSettingsContext();
 
-  const { user } = useMockedUser();
+  const { user } = useAuth0();
 
   const [searchFriends, setSearchFriends] = useState('');
 

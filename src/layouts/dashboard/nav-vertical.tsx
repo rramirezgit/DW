@@ -6,9 +6,10 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
 // hooks
+import { useAuth0 } from '@auth0/auth0-react';
 import { useResponsive } from 'src/hooks/use-responsive';
 // hooks
-import { useMockedUser } from 'src/hooks/use-mocked-user';
+
 // components
 import Logo from 'src/components/logo';
 import Scrollbar from 'src/components/scrollbar';
@@ -27,7 +28,7 @@ type Props = {
 };
 
 export default function NavVertical({ openNav, onCloseNav }: Props) {
-  const { user } = useMockedUser();
+  const { user } = useAuth0();
 
   const pathname = usePathname();
 

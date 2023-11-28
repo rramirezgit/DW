@@ -68,9 +68,8 @@ export default function Header() {
           <LanguagePopover /> */}
 
           <Stack alignItems="center" direction={{ xs: 'row', md: 'row-reverse' }}>
-            <Button variant="contained">Contratar</Button>
-
-            {mdUp && <LoginButton />}
+            {mdUp && <Button variant="contained">Contratar</Button>}
+            <LoginButton />
             {/* 
             <SettingsButton
               sx={{

@@ -61,7 +61,7 @@ export default function HomeContacUs() {
                 icon={
                   expanded === `panel${index}` ? 'zondicons:minus-solid' : 'octicon:feed-plus-16'
                 }
-                color={Theme.palette.info.main}
+                color={Theme.palette.primary.main}
               />
             }
             aria-controls="panel1a-content"
@@ -195,7 +195,7 @@ export default function HomeContacUs() {
                     }}
                   />
                   <Button
-                    color="info"
+                    color="primary"
                     fullWidth
                     size="large"
                     type="submit"

@@ -22,6 +22,8 @@ type SettingsProviderProps = {
 export function SettingsProvider({ children, defaultSettings }: SettingsProviderProps) {
   const { state, update, reset } = useLocalStorage(STORAGE_KEY, defaultSettings);
 
+  state.themeStretch = true;
+
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const isArabic = localStorageGetItem('i18nextLng') === 'ar';

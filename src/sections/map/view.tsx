@@ -27,11 +27,15 @@ import style from 'src/theme/style/mouse.module.css';
 import Iconify from 'src/components/iconify';
 import { fPercent } from 'src/utils/format-number';
 import { useResponsive } from 'src/hooks/use-responsive';
+import { MAPBOX_API } from 'src/config-global';
 import AppWidget from '../overview/app/app-widget';
 import ChartDonut from '../_examples/extra/chart-view/chart-donut';
 import ChartRadialBar from '../_examples/extra/chart-view/chart-radial-bar';
 import { heatmapLayer } from '../_examples/extra/map-view/heatmap/map-style';
 import ChartArea from '../_examples/extra/chart-view/chart-area';
+import MapHighlightByFilter from '../_examples/extra/map-view/map-highlight-by-filter';
+import MapMarkersPopups from '../_examples/extra/map-view/map-markers-popups';
+import MapGeoJsonAnimation from '../_examples/extra/map-view/map-geo-json-animation';
 
 interface CardProps {
   title: string;
@@ -135,6 +139,11 @@ export default function MapAppView() {
 
   const theme = useTheme();
 
+  const baseSettings = {
+    mapboxAccessToken: MAPBOX_API,
+    minZoom: 1,
+  };
+
   const valueMonth = (value: number) => (value > 0 ? `${value} Meses` : `${value}`);
 
   const valueLabelFormatMonth = (value: number) =>
@@ -190,7 +199,7 @@ export default function MapAppView() {
         justifyContent: 'center',
       }}
     >
-      <Image
+      {/* <Image
         src={
           images[
             images.findIndex((mark) => mark.name === formatsselected[formatsselected.length - 1])
@@ -209,7 +218,21 @@ export default function MapAppView() {
           objectFit: 'cover',
           borderRadius: '30px',
         }}
-      />
+      /> */}
+      {/* <Map width="800" height="400" center={[38.907132, -77.036546]} zoom={12}>
+        {({ TileLayer }) => (
+          <>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <TileLayer
+              url="https://vb9w1lc7-4444.brs.devtunnels.ms/api/v1/tiles/{z}/{x}/{y}.png"
+              crossOrigin
+            />
+          </>
+        )}
+      </Map> */}
+      {/* <MapMarkersPopups /> */}
+
+      <MapGeoJsonAnimation {...baseSettings} mapStyle="mapbox://styles/mapbox/satellite-v9" />
     </Box>
   );
 

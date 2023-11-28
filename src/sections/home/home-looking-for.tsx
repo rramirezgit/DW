@@ -33,7 +33,7 @@ const StyledLi = styled('li')(({ theme }) => ({
     display: 'inline-block',
     width: '10px',
     height: '10px',
-    backgroundColor: theme.palette.info.main,
+    backgroundColor: theme.palette.primary.main,
     position: 'absolute',
     left: '0',
     top: '12px',
@@ -76,7 +76,7 @@ export default function HomeDiscover() {
       }}
     >
       <m.div variants={varFade().inDown}>
-        <Typography variant="overline" sx={{ color: Theme.palette.info.main }}>
+        <Typography variant="overline" sx={{ color: Theme.palette.primary.main }}>
           ¿Porque datawing?
         </Typography>
       </m.div>
@@ -111,7 +111,7 @@ export default function HomeDiscover() {
           <StyledLi key={index}>
             <span
               style={{
-                color: Theme.palette.info.main,
+                color: Theme.palette.primary.main,
                 fontWeight: 'bold',
               }}
             >

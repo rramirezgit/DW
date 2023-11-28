@@ -22,18 +22,6 @@ function MapHighlightByFilter({ ...other }: MapBoxProps) {
     },
   };
 
-  const highlightLayer: FillLayer = {
-    id: 'counties-highlighted',
-    type: 'fill',
-    source: 'counties',
-    'source-layer': 'original',
-    paint: {
-      'fill-outline-color': theme.palette.error.main,
-      'fill-color': theme.palette.error.main,
-      'fill-opacity': 0.48,
-    },
-  };
-
   const [hoverInfo, setHoverInfo] = useState<{
     countyName: string;
     longitude: number;
@@ -63,23 +51,14 @@ function MapHighlightByFilter({ ...other }: MapBoxProps) {
       }}
       minZoom={2}
       onMouseMove={onHover}
-      interactiveLayerIds={['counties']}
+      // interactiveLayerIds={['counties']}
       {...other}
     >
       <MapControl />
 
-      <Source type="vector" url="mapbox://mapbox.82pkq93d">
+      {/* <Source type="vector" url="mapbox://mapbox.82pkq93d">
         <Layer beforeId="waterway-label" {...countiesLayer} />
-        <Layer beforeId="waterway-label" {...highlightLayer} filter={filter} />
-      </Source>
-
-      {selectedCounty && hoverInfo && (
-        <MapPopup longitude={hoverInfo.longitude} latitude={hoverInfo.latitude} closeButton={false}>
-          <Typography variant="body2" sx={{ color: 'common.white' }}>
-            {selectedCounty}
-          </Typography>
-        </MapPopup>
-      )}
+      </Source> */}
     </Map>
   );
 }

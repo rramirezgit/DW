@@ -1,82 +1,59 @@
-import { useState, useEffect, memo } from 'react';
-import Map, { Layer, LayerProps, Source } from 'react-map-gl';
-// @mui
-import { useTheme } from '@mui/material/styles';
+import { memo, useReducer } from 'react';
+import Map, { Layer, Source } from 'react-map-gl';
 // components
 import { MapControl, MapBoxProps } from 'src/components/map';
 
 // ----------------------------------------------------------------------
 
 function MapGeoJSONAnimation({ ...other }: MapBoxProps) {
-  const theme = useTheme();
-
-  const pointLayer: LayerProps = {
-    id: 'point',
-    type: 'circle',
-    paint: {
-      'circle-radius': 10,
-      'circle-color': theme.palette.error.main,
-    },
-  };
-
-  const [pointData, setPointData] = useState<
-    | {
-        type: string;
-        coordinates: number[];
-      }
-    | any
-  >(null);
-
-  useEffect(() => {
-    const animation = window.requestAnimationFrame(() =>
-      setPointData(
-        pointOnCircle({
-          center: [-100, 0],
-          angle: Date.now() / 1000,
-          radius: 20,
-        })
-      )
-    );
-
-    return () => window.cancelAnimationFrame(animation);
-  });
-
+  // const [layersVisibility, setLayersVisibility] = useReducer(
+  //   (state, updates) => ({ ...state, ...updates }),
+  //   {}
+  // );
   return (
     <Map
-      initialViewState={{
-        latitude: 0,
-        longitude: -100,
-        zoom: 3,
+      style={{
+        borderRadius: '14px',
       }}
-      mapStyle="mapbox://styles/mapbox/satellite-streets-v11"
+      initialViewState={{
+        latitude: 18.904352072,
+        longitude: -98.928550434,
+        zoom: 16,
+      }}
       {...other}
     >
       <MapControl />
 
-      {pointData && (
-        <Source type="geojson" data={pointData}>
-          <Layer {...pointLayer} />
+      <Source type="raster" url="mapbox://leonchavez.siembra">
+        <Layer
+          id="layer"
+          source="layer"
+          type="raster"
+          layout={{
+            visibility: 'visible',
+          }}
+          paint={{
+            'raster-opacity': 1,
+          }}
+        />
+      </Source>
+      {/*
+      <Source type="raster" url="mapbox://leonchavez.plaza">
+        <Layer id="plaza" source="plaza" type="raster" />
+      </Source> */}
+      {/* 
+      {layers.map((layer) => (
+        <Source key={layer.id} type="raster" url={`mapbox://leonchavez.${layer.id}`}>
+          <Layer
+            id={layer.id}
+            source={layer.id}
+            type="raster"
+            visibility={selectedLayer === layer.id ? 'visible' : 'none'}
+          />
         </Source>
-      )}
+      ))} */}
     </Map>
   );
 }
 
 export default memo(MapGeoJSONAnimation);
-
-// ----------------------------------------------------------------------
-
-function pointOnCircle({
-  center,
-  angle,
-  radius,
-}: {
-  center: [number, number];
-  angle: number;
-  radius: number;
-}) {
-  return {
-    type: 'Point',
-    coordinates: [center[0] + Math.cos(angle) * radius, center[1] + Math.sin(angle) * radius],
-  };
-}

@@ -9,10 +9,10 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 // routes
+import { useAuth0 } from '@auth0/auth0-react';
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 // hooks
-import { useMockedUser } from 'src/hooks/use-mocked-user';
 // auth
 import { useAuthContext } from 'src/auth/hooks';
 // components
@@ -42,7 +42,7 @@ const OPTIONS = [
 export default function AccountPopover() {
   const router = useRouter();
 
-  const { user } = useMockedUser();
+  const { user } = useAuth0();
 
   const { logout } = useAuthContext();
 

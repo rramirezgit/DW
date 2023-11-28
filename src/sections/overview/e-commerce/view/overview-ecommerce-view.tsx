@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 // hooks
-import { useMockedUser } from 'src/hooks/use-mocked-user';
+import { useAuth0 } from '@auth0/auth0-react';
 // _mock
 import {
   _ecommerceNewProducts,
@@ -32,7 +32,7 @@ import EcommerceCurrentBalance from '../ecommerce-current-balance';
 // ----------------------------------------------------------------------
 
 export default function OverviewEcommerceView() {
-  const { user } = useMockedUser();
+  const { user } = useAuth0();
 
   const theme = useTheme();
 
