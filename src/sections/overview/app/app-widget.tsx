@@ -3,6 +3,7 @@ import { ApexOptions } from 'apexcharts';
 import { useTheme } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
 import Stack, { StackProps } from '@mui/material/Stack';
+import { Typography } from '@mui/material';
 // utils
 import { fNumber } from 'src/utils/format-number';
 // components
@@ -89,12 +90,11 @@ export default function AppWidget({
         overflow: 'hidden',
         position: 'relative',
         color: 'common.white',
-        bgcolor: `${color}.dark`,
         ...sx,
       }}
       {...other}
     >
-      <Chart type="radialBar" series={[series]} options={chartOptions} width={86} height={86} />
+      <Chart type="radialBar" series={[series]} options={chartOptions} width={110} height={110} />
 
       <ListItemText
         sx={{ ml: 3 }}

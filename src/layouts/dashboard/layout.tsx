@@ -25,9 +25,9 @@ export default function DashboardLayout({ children }: Props) {
 
   const nav = useBoolean();
 
-  const isHorizontal = settings.themeLayout === 'horizontal';
+  const isHorizontal = true;
 
-  const isMini = settings.themeLayout === 'mini';
+  const isMini = false;
 
   const renderNavMini = <NavMini />;
 
@@ -40,9 +40,14 @@ export default function DashboardLayout({ children }: Props) {
       <>
         <Header onOpenNav={nav.onTrue} />
 
-        {lgUp ? renderHorizontal : renderNavVertical}
-
-        <Main>{children}</Main>
+        {renderHorizontal}
+        <Box
+          sx={{
+            marginTop: { xs: 4, md: 0 },
+          }}
+        >
+          <Main>{children}</Main>
+        </Box>
       </>
     );
   }

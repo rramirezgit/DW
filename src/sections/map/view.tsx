@@ -59,24 +59,24 @@ const CardAnalitycs = ({ title, series, labels }: CardProps) => (
           xs: 'column',
           md: 'row',
         }}
-        alignItems="center"
-        justifyContent="center"
       >
-        <Typography
-          color="text.primary"
+        <Box
           sx={{
             width: {
               xs: '100%',
-              md: '100px',
+              md: '90%',
             },
-            fontSize: '13px',
-            fontWeight: 'bold',
+            height: '150px',
           }}
         >
-          Medidor de Hidratación Vegetal
-        </Typography>
-        <Box style={{ width: '90%', height: '150px' }}>
-          <ChartRadialBar series={series} labels={['Hidratación Mayor a 0.8']} />
+          <AppWidget
+            title="Medidor de Hidratación Vegetal"
+            total={38566}
+            icon=""
+            chart={{
+              series: 48,
+            }}
+          />
         </Box>
       </Stack>
     </CardContent>

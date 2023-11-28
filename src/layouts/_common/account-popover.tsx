@@ -42,9 +42,7 @@ const OPTIONS = [
 export default function AccountPopover() {
   const router = useRouter();
 
-  const { user } = useAuth0();
-
-  const { logout } = useAuthContext();
+  const { user, logout } = useAuthContext();
 
   const { enqueueSnackbar } = useSnackbar();
 
