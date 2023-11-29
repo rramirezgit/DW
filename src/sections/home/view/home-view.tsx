@@ -11,16 +11,8 @@ import ScrollProgress from 'src/components/scroll-progress';
 //
 import HomeHero from '../home-hero';
 import HomeCars from '../home-cards';
-import HomePricing from '../home-pricing';
-import HomeDarkMode from '../home-dark-mode';
-import HomeLookingFor from '../home-looking-for';
-import HomeForDesigner from '../home-for-designer';
-import HomeColorPresets from '../home-color-presets';
-import HomeAdvertisement from '../home-advertisement';
-import HomeCleanInterfaces from '../home-clean-interfaces';
-import HomeHugePackElements from '../home-hugepack-elements';
-import HomeServicios from '../home-services';
 import HomeTeam from '../home-team';
+import HomeServices from '../home-services';
 
 // ----------------------------------------------------------------------
 
@@ -67,7 +59,7 @@ export default function HomeView() {
         }}
       >
         <HomeCars />
-        <HomeServicios />
+        <HomeServices />
         <HomeTeam />
       </Box>
     </MainLayout>

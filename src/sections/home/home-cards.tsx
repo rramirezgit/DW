@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { m } from 'framer-motion';
 // @mui
 import Box from '@mui/material/Box';
@@ -6,7 +7,6 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 // components
 import { MotionViewport, varFade } from 'src/components/animate';
-import { useState } from 'react';
 import { useResponsive } from 'src/hooks/use-responsive';
 
 // ----------------------------------------------------------------------
