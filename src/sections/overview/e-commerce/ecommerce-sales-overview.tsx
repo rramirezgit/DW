@@ -6,6 +6,7 @@ import Card, { CardProps } from '@mui/material/Card';
 import LinearProgress from '@mui/material/LinearProgress';
 // utils
 import { fPercent, fCurrency } from 'src/utils/format-number';
+import Image from 'src/components/image';
 
 // ----------------------------------------------------------------------
 
@@ -26,9 +27,12 @@ export default function EcommerceSalesOverview({ title, subheader, data, ...othe
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
 
-      <Stack spacing={4} sx={{ px: 3, pt: 3, pb: 5 }}>
-        {data.map((progress) => (
-          <ProgressItem key={progress.label} progress={progress} />
+      <Stack spacing={7} sx={{ px: 3, pt: 3, pb: 8 }} width="100%">
+        {data.map((progress, index) => (
+          <Stack key={progress.label} spacing={1} direction="row" width="100%">
+            <Image alt={progress.label} src={`/assets/images/home/tree${index}.png`} />
+            <ProgressItem key={progress.label} progress={progress} />
+          </Stack>
         ))}
       </Stack>
     </Card>
@@ -43,7 +47,7 @@ type ProgressItemProps = {
 
 function ProgressItem({ progress }: ProgressItemProps) {
   return (
-    <Stack spacing={1}>
+    <Stack spacing={2} width="100%">
       <Stack direction="row" alignItems="center">
         <Typography variant="subtitle2" sx={{ flexGrow: 1 }}>
           {progress.label}

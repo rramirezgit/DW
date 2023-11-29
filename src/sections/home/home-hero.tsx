@@ -6,23 +6,22 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-
 // routes
 // theme
-import { Button } from '@mui/material';
 import { primaryFont } from 'src/theme/typography';
-import { textGradient, bgGradient } from 'src/theme/css';
+import { textGradient, bgGradient, bgBlur } from 'src/theme/css';
 // layouts
 import { HEADER } from 'src/layouts/config-layout';
 // components
 import { MotionContainer, varFade } from 'src/components/animate';
+import SearchField from 'src/components/search-field/search-field';
 
 // ----------------------------------------------------------------------
 
 const StyledRoot = styled('div')(({ theme }) => ({
   ...bgGradient({
     color: alpha(theme.palette.background.default, theme.palette.mode === 'light' ? 0 : 0.1),
-    imgUrl: '/assets/background/Hero.png',
+    imgUrl: '/assets/background/Hero.jpg',
   }),
   width: '100%',
   height: '100vh',
@@ -119,7 +118,7 @@ export default function HomeHero() {
             lineHeight: `${48 / 40}`,
           }}
         >
-          La tecnología más avanzada en el sector
+          La tecnología más avanzada en
         </Typography>
       </m.div>
 
@@ -133,7 +132,7 @@ export default function HomeHero() {
             repeat: Infinity,
           }}
         >
-          AgroIndustrial
+          Topografías
         </StyledTextGradient>
       </m.div>
 
@@ -143,8 +142,23 @@ export default function HomeHero() {
             Rastreo, Mapeo y Mucho Más: Soluciones Innovadoras para tus Necesidades
           </Typography>
         </m.div>
-        <m.div variants={varFade().in}>
-          <Button variant="contained">Contratar</Button>
+
+        <m.div
+          variants={varFade().inUp}
+          style={{
+            width: '100%',
+            padding: '8px',
+            borderRadius: '4px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '8px',
+          }}
+        >
+          <Typography variant="body2" sx={{ textAlign: 'center' }}>
+            Con IA te ayudamos a definir el mejor estudio para tu terreno.
+          </Typography>
+          <SearchField />
         </m.div>
       </Stack>
     </Stack>

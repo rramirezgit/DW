@@ -11,6 +11,7 @@ import {
   CardHeader,
   Chip,
   Container,
+  Grid,
   Paper,
   Stack,
   TextField,
@@ -28,6 +29,7 @@ import Iconify from 'src/components/iconify';
 import { fPercent } from 'src/utils/format-number';
 import { useResponsive } from 'src/hooks/use-responsive';
 import { MAPBOX_API } from 'src/config-global';
+import { _ecommerceSalesOverview, _mock } from 'src/_mock';
 import AppWidget from '../overview/app/app-widget';
 import ChartDonut from '../_examples/extra/chart-view/chart-donut';
 import ChartRadialBar from '../_examples/extra/chart-view/chart-radial-bar';
@@ -36,6 +38,8 @@ import ChartArea from '../_examples/extra/chart-view/chart-area';
 import MapHighlightByFilter from '../_examples/extra/map-view/map-highlight-by-filter';
 import MapMarkersPopups from '../_examples/extra/map-view/map-markers-popups';
 import MapGeoJsonAnimation from '../_examples/extra/map-view/map-geo-json-animation';
+import AnalyticsCurrentVisits from '../overview/analytics/analytics-current-visits';
+import EcommerceSalesOverview from '../overview/e-commerce/ecommerce-sales-overview';
 
 interface CardProps {
   title: string;
@@ -84,25 +88,7 @@ const CardAnalitycs = ({ title, series, labels }: CardProps) => (
 );
 
 export default function MapAppView() {
-  const formats = [
-    'RGB',
-    'NDVI',
-    'GNDVI',
-    'NDRE',
-    'LCI',
-    'OSAVI',
-    'EVI',
-    'SAVI',
-    'EWI',
-    'LAI',
-    'LST',
-    'NBR',
-    'NDBI',
-    'NDSI',
-    'SCVI',
-    'EMI',
-    'NDMI',
-  ];
+  const formats = ['RGB', 'Etiquetado', 'NDVI', 'MDS', 'Tree Type', 'Tree Coverage', 'CO2'];
 
   const [formatsselected, setFormatsselected] = useState(() => ['']);
 
@@ -237,20 +223,27 @@ export default function MapAppView() {
   );
 
   const options = (
-    <ToggleButtonGroup
-      size="small"
-      fullWidth
-      color="primary"
-      value={formatsselected}
-      onChange={handleFormat}
-      aria-label="text formatting"
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
     >
-      {formats.map((format, index) => (
-        <ToggleButton key={index} value={format}>
-          {format}
-        </ToggleButton>
-      ))}
-    </ToggleButtonGroup>
+      <ToggleButtonGroup
+        size="small"
+        color="primary"
+        value={formatsselected}
+        onChange={handleFormat}
+        aria-label="text formatting"
+      >
+        {formats.map((format, index) => (
+          <ToggleButton key={index} value={format}>
+            {format}
+          </ToggleButton>
+        ))}
+      </ToggleButtonGroup>
+    </Box>
   );
   const [formatsselectedmobile, setFormatsselectedmobile] = useState(formats.slice(0, 6));
 
@@ -363,40 +356,163 @@ export default function MapAppView() {
   );
 
   const renderAnalitycs = (
-    <>
+    <Card>
+      <CardHeader title="Índice de Vegetación Mejorado (EVI)" />
+      <CardContent>
+        <Typography variant="h2" component="div" noWrap>
+          0.85
+        </Typography>
+        {renderTrending}
+
+        <ChartArea series={[{ name: 'series1', data: [31, 40, 28, 51, 42, 109, 100] }]} />
+      </CardContent>
+    </Card>
+  );
+
+  const renderCo2Tree = (
+    <Grid container spacing={2}>
+      <Grid item xs={12} md={6} lg={8}>
+        <EcommerceSalesOverview
+          title="CO2 Capture Per Tree Species"
+          data={[
+            {
+              label: 'Tree 1',
+              value: 54,
+              totalAmount: 34567,
+            },
+            {
+              label: 'Tree 2',
+              value: 20,
+              totalAmount: 12490,
+            },
+            {
+              label: 'Tree 3',
+              value: 26,
+              totalAmount: 17009,
+            },
+            {
+              label: 'Tree 4',
+              value: 26,
+              totalAmount: 17009,
+            },
+          ]}
+        />
+      </Grid>
+      <Grid item xs={12} md={6} lg={4}>
+        <AnalyticsCurrentVisits
+          title="Current Visits"
+          chart={{
+            series: [
+              { label: 'America', value: 4344 },
+              { label: 'Asia', value: 5435 },
+              { label: 'Europe', value: 1443 },
+              { label: 'Africa', value: 4443 },
+            ],
+          }}
+        />
+      </Grid>
+    </Grid>
+  );
+
+  const renderTreeCards = (
+    <Box width="100%">
       <Stack
         direction={{
           xs: 'column',
           md: 'row',
         }}
-        width="100%"
         spacing={3}
-        justifyContent={{
-          xs: 'center',
-          md: 'space-between',
-        }}
       >
-        {[12.3, 12.3, 22.44].map((item, index) => (
-          <CardAnalitycs
+        {[
+          {
+            label: 'Tree 1',
+            value: '123,456',
+            text: 'Trees In Area',
+            color: '#FFAB00',
+          },
+          {
+            label: 'Tree 2',
+            value: '321,654',
+            text: 'Trees In Area',
+            color: '#8E33FF',
+          },
+          {
+            label: 'Tree 3',
+            value: '123,458',
+            text: 'Trees In Area',
+            color: '#FDBAB9',
+          },
+          {
+            label: 'Tree 4',
+            value: '123,458',
+            text: 'Trees In Area',
+            color: '#009E7F',
+          },
+        ].map((tree, index) => (
+          <Card
             key={index}
-            title="Medidor de Hidratación Vegetal"
-            series={[item]}
-            labels={['Hidratación Mayor a 0.8']}
-          />
+            sx={{
+              width: {
+                xs: '100%',
+                md: '50%',
+              },
+            }}
+          >
+            <CardContent>
+              <Typography sx={{ fontWeight: 600, fontSize: 14, color: tree.color }}>
+                {tree.label}
+              </Typography>
+              <Stack direction="row" alignItems="end" spacing={2}>
+                <Typography sx={{ fontWeight: 700, fontSize: 32 }}>{tree.value}</Typography>
+                <Typography variant="subtitle2" color={theme.palette.text.secondary}>
+                  {tree.text}
+                </Typography>
+              </Stack>
+            </CardContent>
+          </Card>
         ))}
       </Stack>
-      <Card>
-        <CardHeader title="Índice de Vegetación Mejorado (EVI)" />
-        <CardContent>
-          <Typography variant="h2" component="div" noWrap>
-            0.85
-          </Typography>
-          {renderTrending}
+    </Box>
+  );
 
-          <ChartArea series={[{ name: 'series1', data: [31, 40, 28, 51, 42, 109, 100] }]} />
-        </CardContent>
-      </Card>
-    </>
+  const renderMapCards = (
+    <Box width="100%">
+      <Stack
+        direction={{
+          xs: 'column',
+          md: 'row',
+        }}
+        spacing={3}
+      >
+        {[
+          {
+            label: 'Densidad de Emisiones Capturadas ',
+            value: '2,447 Ton/Km2',
+          },
+          {
+            label: 'Árboles Totales ',
+            value: '1,228,971',
+          },
+        ].map((tree, index) => (
+          <Card
+            key={index}
+            sx={{
+              width: {
+                xs: '100%',
+                md: '50%',
+              },
+            }}
+          >
+            <CardContent>
+              <Typography sx={{ fontWeight: 600, fontSize: 14 }}>{tree.label}</Typography>
+              <Stack direction="row" alignItems="end" spacing={2}>
+                <Typography sx={{ fontWeight: 700, fontSize: 32 }}>{tree.value}</Typography>
+              </Stack>
+            </CardContent>
+          </Card>
+        ))}
+      </Stack>
+    </Box>
   );
 
   return (
@@ -404,15 +520,17 @@ export default function MapAppView() {
       <Stack spacing={2}>
         {renderButton}
 
+        {renderMapCards}
+
         {renderMAp}
 
         {mdUp ? options : optionMobile}
 
-        {/* {renderSlider} */}
-
-        {renderRange}
-
         {renderAnalitycs}
+
+        {renderTreeCards}
+
+        {renderCo2Tree}
       </Stack>
     </Container>
   );

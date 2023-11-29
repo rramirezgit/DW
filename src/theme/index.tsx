@@ -1,16 +1,18 @@
 'use client';
 
 import merge from 'lodash/merge';
-import { useMemo } from 'react';
+import { use, useMemo } from 'react';
 // @mui
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider as MuiThemeProvider, ThemeOptions } from '@mui/material/styles';
 // locales
+import { usePathname } from 'next/navigation';
 import { useLocales } from 'src/locales';
 // components
 import { useSettingsContext } from 'src/components/settings';
 // system
 import { palette } from './palette';
+import { paletteAgro } from './paletteAgro';
 import { shadows } from './shadows';
 import { typography } from './typography';
 import { customShadows } from './custom-shadows';
@@ -42,15 +44,17 @@ export default function ThemeProvider({ children }: Props) {
 
   const directionOption = direction(settings.themeDirection);
 
+  const path = usePathname();
   const baseOption = useMemo(
     () => ({
-      palette: palette('light'),
+      ///  si estoy en el dashboard tomo la paleta de agro si contiene la palabra dashboard
+      palette: path.includes('dashboard') ? paletteAgro('dark') : paletteAgro('dark'),
       shadows: shadows('light'),
       customShadows: customShadows('light'),
       typography,
       shape: { borderRadius: 8 },
     }),
-    []
+    [path]
   );
 
   const memoizedValue = useMemo(
