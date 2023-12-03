@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Card, { CardProps } from '@mui/material/Card';
 import LinearProgress from '@mui/material/LinearProgress';
 // utils
+import { alpha } from '@mui/material/styles';
 import { fPercent, fCurrency } from 'src/utils/format-number';
 import Image from 'src/components/image';
 
@@ -14,6 +15,7 @@ type ItemProps = {
   label: string;
   value: number;
   totalAmount: number;
+  color: string;
 };
 
 interface Props extends CardProps {
@@ -63,11 +65,15 @@ function ProgressItem({ progress }: ProgressItemProps) {
       <LinearProgress
         variant="determinate"
         value={progress.value}
-        color={
-          (progress.label === 'Total Income' && 'info') ||
-          (progress.label === 'Total Expenses' && 'warning') ||
-          'primary'
-        }
+        sx={{
+          /// color
+          '&.MuiLinearProgress-root': {
+            bgcolor: alpha(progress.color, 0.18),
+          },
+          '& .MuiLinearProgress-bar': {
+            bgcolor: progress.color,
+          },
+        }}
       />
     </Stack>
   );

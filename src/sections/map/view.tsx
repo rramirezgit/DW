@@ -143,7 +143,17 @@ export default function MapAppView() {
         justifyContent: 'end',
       }}
     >
-      <Button variant="contained" color="primary">
+      <Button
+        variant="contained"
+        sx={{
+          backgroundColor: '#88B14B',
+          color: '#fff',
+          '&:hover': {
+            backgroundColor: '#88B14B',
+            color: '#fff',
+          },
+        }}
+      >
         Descargar
       </Button>
     </Box>
@@ -379,35 +389,40 @@ export default function MapAppView() {
               label: 'Tree 1',
               value: 54,
               totalAmount: 34567,
+              color: '#FFAB00',
             },
             {
               label: 'Tree 2',
               value: 20,
               totalAmount: 12490,
+              color: '#8E33FF',
             },
             {
               label: 'Tree 3',
               value: 26,
               totalAmount: 17009,
+              color: '#FDBAB9',
             },
             {
               label: 'Tree 4',
               value: 26,
               totalAmount: 17009,
+              color: '#009E7F',
             },
           ]}
         />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
         <AnalyticsCurrentVisits
-          title="Current Visits"
+          title="Distribución estimada Especies"
           chart={{
             series: [
-              { label: 'America', value: 4344 },
-              { label: 'Asia', value: 5435 },
-              { label: 'Europe', value: 1443 },
-              { label: 'Africa', value: 4443 },
+              { label: 'Tree 1', value: 54 },
+              { label: 'Tree 2', value: 20 },
+              { label: 'Tree 3', value: 26 },
+              { label: 'Tree 4', value: 26 },
             ],
+            colors: ['#FFAB00', '#8E33FF', '#FDBAB9', '#009E7F'],
           }}
         />
       </Grid>
@@ -486,11 +501,11 @@ export default function MapAppView() {
       >
         {[
           {
-            label: 'Densidad de Emisiones Capturadas ',
-            value: '2,447 Ton/Km2',
+            label: 'Estimación de Biomasa Contenida',
+            value: '2,447 Ton',
           },
           {
-            label: 'Árboles Totales ',
+            label: 'Estimación de Árboles Totales ',
             value: '1,228,971',
           },
         ].map((tree, index) => (
@@ -525,8 +540,6 @@ export default function MapAppView() {
         {renderMAp}
 
         {mdUp ? options : optionMobile}
-
-        {renderAnalitycs}
 
         {renderTreeCards}
 
